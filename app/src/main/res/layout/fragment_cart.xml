@@ -15,14 +15,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.8" />
+            app:layout_constraintGuide_percent="0.85" />
 
         <TextView
             android:id="@+id/tvCarts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No Carts... "
-            android:textColor="@color/black"
+            android:textColor="@color/orange"
             android:textSize="@dimen/_20ssp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,18 +37,21 @@
             app:layout_constraintBottom_toBottomOf="@+id/v1"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            android:id="@+id/llFooter"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:padding="@dimen/_20sdp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clFooter"
+            app:layout_constraintTop_toBottomOf="@+id/v1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v1">
+            android:layout_width="match_parent"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:layout_height="0dp">
 
             <LinearLayout
+                android:id="@+id/llFooter"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/cvOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:orientation="horizontal">
 
                 <TextView
@@ -65,16 +68,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="$599"
+                    android:text="$0"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_13ssp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cvOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llFooter"
                 app:cardCornerRadius="@dimen/_13sdp">
 
                 <Button
@@ -86,8 +91,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13ssp" />
             </androidx.cardview.widget.CardView>
-        </RelativeLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.smarteist.autoimageslider.SliderView
+import com.tuhoc.shopsmart.R
 import com.tuhoc.shopsmart.adapters.CategoryAdapter
 import com.tuhoc.shopsmart.adapters.ProductAdapter
 import com.tuhoc.shopsmart.adapters.SliderAdapter
@@ -31,12 +33,11 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+
         productAdapter = ProductAdapter()
         categoryAdapter = CategoryAdapter()
-
         sliderAdapter = SliderAdapter()
-
-        homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -56,25 +57,35 @@ class HomeFragment : Fragment() {
         observeSliders()
         onProductClick()
         onCategoryClick()
+        onSearchClick()
+    }
+
+    private fun onSearchClick() {
+        binding.btnSearch.setOnClickListener {
+            val name = binding.edtSearch.text.toString()
+            val bundle = Bundle()
+            bundle.putString("name", name)
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment, bundle)
+        }
     }
 
     private fun prepareRecyclerView() {
-        binding.rlvAllProduct.apply {
-            adapter = productAdapter
-        }
+        binding.apply {
+            rlvAllProduct.adapter = productAdapter
 
-        binding.rlvCategory.apply {
-            adapter = categoryAdapter
-            layoutManager = GridLayoutManager(context, 4, GridLayoutManager.VERTICAL, false)
-        }
+            rlvCategory.apply {
+                adapter = categoryAdapter
+                layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
+            }
 
-        // slider
-        binding.slvPhoto.setSliderAdapter(sliderAdapter)
-        binding.slvPhoto.apply {
-            autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
-            scrollTimeInSec = 3
-            isAutoCycle = true
-            startAutoCycle()
+            // slider
+            slvPhoto.setSliderAdapter(sliderAdapter)
+            slvPhoto.apply {
+                autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
+                scrollTimeInSec = 3
+                isAutoCycle = true
+                startAutoCycle()
+            }
         }
     }
 

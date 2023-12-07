@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activities.SignupActivity">
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v1"
         android:layout_width="match_parent"
@@ -61,35 +62,25 @@
         app:layout_constraintTop_toBottomOf="@+id/v1">
 
         <EditText
-            android:id="@+id/edtName"
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
             android:background="@drawable/input_background"
-            android:hint="Full Name"
+            android:hint="Email"
             android:padding="@dimen/_10sdp"
             android:textColorHint="@color/grey"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/input_background"
-            android:hint="Email or Phone"
-            android:padding="@dimen/_10sdp"
-            android:textColorHint="@color/grey"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintTop_toBottomOf="@+id/edtName" />
-
-        <EditText
             android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:background="@drawable/input_background"
             android:hint="Password"
+            android:inputType="textPassword"
             android:padding="@dimen/_10sdp"
             android:textColorHint="@color/grey"
             android:textSize="@dimen/_13ssp"
@@ -99,9 +90,10 @@
             android:id="@+id/edtConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:background="@drawable/input_background"
             android:hint="Confirm Password"
+            android:inputType="textPassword"
             android:padding="@dimen/_10sdp"
             android:textColorHint="@color/grey"
             android:textSize="@dimen/_13ssp"
@@ -171,4 +163,15 @@
                 android:textSize="@dimen/_13ssp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

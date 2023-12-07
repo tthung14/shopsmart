@@ -1,11 +1,9 @@
 package com.tuhoc.shopsmart.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.tuhoc.shopsmart.R
 import com.tuhoc.shopsmart.data.pojo.Product
 import com.tuhoc.shopsmart.databinding.ProductCardBinding
 import java.util.Random
@@ -35,7 +33,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         holder.binding.apply {
             Glide.with(holder.itemView)
 //                .load(currentItem.images?.get(rand.nextInt(currentItem.images.size)))
-                .load(currentItem.images[0])
+                .load(currentItem.images?.get(0))
                 .into(imgImage)
 
             tvTitle.text = currentItem.title
@@ -44,7 +42,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         }
 
         holder.itemView.setOnClickListener {
-            onItemClick.onClickListener(productList[position])
+            onItemClick.onClickListener(currentItem)
         }
     }
 

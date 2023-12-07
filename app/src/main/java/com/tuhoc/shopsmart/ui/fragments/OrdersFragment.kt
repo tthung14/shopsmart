@@ -5,38 +5,51 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.tuhoc.shopsmart.R
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.tuhoc.shopsmart.adapters.OrdersAdapter
+import com.tuhoc.shopsmart.databinding.FragmentOrdersBinding
+import com.tuhoc.shopsmart.viewmodel.OrdersViewModel
 
 class OrdersFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
-
+    private lateinit var binding: FragmentOrdersBinding
+    private lateinit var ordersViewModel: OrdersViewModel
+    private lateinit var ordersAdapter: OrdersAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        ordersViewModel = ViewModelProvider(this)[OrdersViewModel::class.java]
+        ordersAdapter = OrdersAdapter()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_orders, container, false)
+        binding = FragmentOrdersBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            OrdersFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        prepareRecyclerView()
+        observeOrders()
+    }
+    private fun prepareRecyclerView() {
+        binding.rlvOrders.apply {
+            adapter = ordersAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        }
+    }
+
+    private fun observeOrders() {
+        ordersViewModel.getOrder()
+        ordersViewModel.orderList.observe(viewLifecycleOwner) { orderList ->
+            ordersAdapter.setOrderList(orderList.toMutableList())
+            if (orderList.isEmpty())
+                binding.tvOrders.visibility = View.VISIBLE
+            else
+                binding.tvOrders.visibility = View.GONE
+        }
     }
 }

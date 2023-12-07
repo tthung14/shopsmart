@@ -75,7 +75,7 @@ dependencies {
     implementation("com.intuit.ssp:ssp-android:1.1.0")
     implementation("com.intuit.sdp:sdp-android:1.1.0")
 
-    // retrofit
+    // retrofit call api
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
@@ -86,6 +86,9 @@ dependencies {
     // gson
     implementation("com.google.code.gson:gson:2.10.1")
 
+    // circle imageview
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
     // slide
     implementation("com.github.smarteist:autoimageslider:1.4.0")
 
@@ -95,4 +98,13 @@ dependencies {
 
     // realtime
     implementation("com.google.firebase:firebase-database")
+
+    // authentication
+    implementation("com.google.firebase:firebase-auth")
+
+    // image picker
+    implementation ("com.github.dhaval2404:imagepicker:2.1")
+
+    // storage
+    implementation("com.google.firebase:firebase-storage")
 }

@@ -7,23 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tuhoc.shopsmart.adapters.ProductAdapter
 import com.tuhoc.shopsmart.data.pojo.Product
-import com.tuhoc.shopsmart.databinding.FragmentFavoritesBinding
+import com.tuhoc.shopsmart.databinding.FragmentSearchBinding
 import com.tuhoc.shopsmart.ui.activities.ProductDetailActivity
 import com.tuhoc.shopsmart.utils.Constants
-import com.tuhoc.shopsmart.viewmodel.FavoritesViewModel
+import com.tuhoc.shopsmart.viewmodel.HomeViewModel
 
-class FavoritesFragment : Fragment() {
-    private lateinit var favoritesViewModel: FavoritesViewModel
-    private lateinit var binding: FragmentFavoritesBinding
+class SearchFragment : Fragment() {
+    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var binding: FragmentSearchBinding
     private lateinit var productAdapter: ProductAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        favoritesViewModel = ViewModelProvider(this)[FavoritesViewModel::class.java]
+        homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         productAdapter = ProductAdapter()
     }
 
@@ -31,7 +31,7 @@ class FavoritesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,22 +42,25 @@ class FavoritesFragment : Fragment() {
         observeProducts()
         onProductClick()
     }
-
     private fun prepareRecyclerView() {
-        binding.rlvFavorites.apply {
+        binding.rlvSearch.apply {
             adapter = productAdapter
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+        }
+        binding.imgBack.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
     private fun observeProducts() {
-        favoritesViewModel.getProductsByFavorite()
-        favoritesViewModel.productList.observe(viewLifecycleOwner) { productList ->
-            productAdapter.setProductList(productList.toMutableList())
-            if (productList.isEmpty())
-                binding.tvFavorites.visibility = View.VISIBLE
+        val name: String? = arguments?.getString("name")
+        homeViewModel.searchByName(name.toString())
+        homeViewModel.productList.observe(viewLifecycleOwner) {
+            productAdapter.setProductList(it.toMutableList())
+            if (it.isEmpty())
+                binding.tvNoProduct.visibility = View.VISIBLE
             else
-                binding.tvFavorites.visibility = View.GONE
+                binding.tvNoProduct.visibility = View.GONE
         }
     }
 

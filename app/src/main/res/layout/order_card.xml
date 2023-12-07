@@ -17,24 +17,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cvImage"
+        <LinearLayout
+            android:id="@+id/llImage"
             android:layout_width="@dimen/_70sdp"
-            android:layout_height="@dimen/_70sdp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imgImage"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:padding="@dimen/_5sdp"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llTitle"
@@ -42,17 +39,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cvImage"
+            app:layout_constraintStart_toEndOf="@+id/llImage"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Apple"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13ssp"
-                android:textStyle="bold"
-                tools:text="Apple" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -62,50 +59,76 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/llPrice"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cvImage"
+            app:layout_constraintStart_toEndOf="@+id/llImage"
             app:layout_constraintTop_toBottomOf="@+id/llTitle">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Quantity: "
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                tools:text="Quantity: " />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="10"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                tools:text="10" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_5sdp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/llDate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cvImage"
+            app:layout_constraintStart_toEndOf="@+id/llImage"
             app:layout_constraintTop_toBottomOf="@+id/llQuantity">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Total: "
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                tools:text="Total: " />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="$ 1000"
+                android:textColor="@color/orange"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/llImage"
+            app:layout_constraintTop_toBottomOf="@+id/llPrice">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Purchase date: "
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                tools:text="$1000" />
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="30/11/2023"
+                android:textColor="@color/dark"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

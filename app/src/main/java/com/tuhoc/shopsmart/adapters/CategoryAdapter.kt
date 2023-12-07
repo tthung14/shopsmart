@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tuhoc.shopsmart.data.pojo.Category
-import com.tuhoc.shopsmart.data.pojo.Product
 import com.tuhoc.shopsmart.databinding.CategoryCardBinding
 
 class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
@@ -37,7 +36,7 @@ class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(
             tvCategoryName.text = currentItem.name
         }
         holder.itemView.setOnClickListener {
-            onItemClick.onClickListener(categoryList[position])
+            onItemClick.onClickListener(currentItem)
         }
     }
 

@@ -1,13 +1,10 @@
 package com.tuhoc.shopsmart.ui.activities
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.tuhoc.shopsmart.adapters.ProductAdapter
 import com.tuhoc.shopsmart.data.pojo.Category
 import com.tuhoc.shopsmart.data.pojo.Product
@@ -31,12 +28,12 @@ class CategoryActivity : AppCompatActivity() {
         prepareRecyclerView()
         observeProducts()
         onProductClick()
-        onBack()
+        onClick()
     }
 
-    private fun onBack() {
+    private fun onClick() {
         binding.imgBack.setOnClickListener {
-            finishAndRemoveTask()
+            finish()
         }
     }
 
@@ -44,7 +41,6 @@ class CategoryActivity : AppCompatActivity() {
         binding.rlvProduct.apply {
             adapter = productAdapter
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
-
         }
     }
 

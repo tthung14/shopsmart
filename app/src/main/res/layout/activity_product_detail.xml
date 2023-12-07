@@ -28,7 +28,7 @@
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/back" />
+                android:background="@drawable/ic_back" />
 
             <ImageButton
                 android:id="@+id/imgWishList"
@@ -84,7 +84,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_13ssp"
                     android:textStyle="bold"
-                    tools:text="$ 1000" />
+                    android:text="$ 1000" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/num_background"
                             android:gravity="center"
-                            android:text="0"
+                            android:text="1"
                             android:textAlignment="center"
                             android:textSize="@dimen/_13ssp"
                             android:textStyle="bold" />
@@ -180,7 +180,7 @@
                     android:id="@+id/tvTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$ 599"
+                    android:text="$ 1000"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_13ssp"
                     android:textStyle="bold" />

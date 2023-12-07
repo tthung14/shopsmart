@@ -15,16 +15,25 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.4" />
 
-        <ImageView
-            android:id="@+id/imgImage"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
-            android:src="@mipmap/ic_launcher"
-            app:layout_constraintBottom_toBottomOf="@id/v1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/profile_background"
+            app:layout_constraintBottom_toBottomOf="@+id/v1"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgImage"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_120sdp"
+                android:src="@drawable/avatar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:id="@+id/llName"
@@ -43,13 +52,14 @@
                 android:layout_height="wrap_content"
                 android:text="Full Name: "
                 android:textColor="@color/orange"
-                android:textSize="@dimen/_20ssp" />
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hùng"
+                android:text="Hung"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_20ssp" />
         </LinearLayout>
@@ -71,13 +81,14 @@
                 android:layout_height="wrap_content"
                 android:text="Account: "
                 android:textColor="@color/orange"
-                android:textSize="@dimen/_20ssp" />
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="bc@gmail.com"
+                android:text="a@gmail.com"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_20ssp" />
         </LinearLayout>
@@ -99,23 +110,25 @@
                 android:layout_height="wrap_content"
                 android:text="Order Quantity: "
                 android:textColor="@color/orange"
-                android:textSize="@dimen/_20ssp" />
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvOrderQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5"
+                android:text="0"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_20ssp" />
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cvLogout"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             app:cardCornerRadius="@dimen/_13sdp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cvEdit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llOrderQuantity">
 
@@ -128,6 +141,36 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13ssp" />
         </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvEdit"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:cardCornerRadius="@dimen/_13sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cvLogout"
+            app:layout_constraintTop_toBottomOf="@id/llOrderQuantity">
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                android:text="Edit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp" />
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
