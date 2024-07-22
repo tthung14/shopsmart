@@ -37,7 +37,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
             tvTitle.text = currentItem.product?.title
             tvPrice.text = currentItem.product?.price.toString()
             tvQuantity.text = currentItem.quantity.toString()
-            tvTotal.text = "$ " + tvPrice.text.toString().toInt() * tvQuantity.text.toString().toInt()
+            tvTotal.text = "$ " + tvPrice.text.toString().toDouble() * tvQuantity.text.toString().toInt()
 
             imgDelete.setOnClickListener {
                 onItemClick.onDeleteClick(currentItem)

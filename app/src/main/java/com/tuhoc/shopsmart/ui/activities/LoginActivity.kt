@@ -29,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null ) {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            user.reload()
             finish()
         }
     }
@@ -65,6 +66,30 @@ class LoginActivity : AppCompatActivity() {
         binding.tvSignup.setOnClickListener {
             startActivity(Intent(this@LoginActivity, SignupActivity::class.java))
             finish()
+        }
+
+        binding.tvForgot.setOnClickListener {
+            val email = binding.edtEmail.text.toString()
+
+            val regEmail = ".*@gmail\\.com$".toRegex()
+
+            if (email.isNotEmpty()) {
+                binding.progressBar.visibility = View.VISIBLE
+                loginViewModel.forgetPassword(email) { success, message ->
+                    binding.progressBar.visibility = View.GONE
+                    if (regEmail.matches(email)) {
+                        if (success) {
+                            Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(this@LoginActivity, "Please enter the correct format", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(this@LoginActivity, "All fields are mandatory", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

@@ -2,7 +2,6 @@ package com.tuhoc.shopsmart.viewmodel
 
 import android.net.Uri
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import com.google.firebase.Firebase
@@ -29,7 +28,6 @@ class EditAccountViewModel : ViewModel() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun editPhoto(photoUri: Uri, onResult: (String, Boolean) -> Unit) {
         val imageRef: StorageReference = storageRef.child("images/${getCurrentDate()}.jpg")
-        Log.d("TAG", "editPhoto: ${getCurrentDate()}")
 
         imageRef.putFile(photoUri)
             .addOnSuccessListener {

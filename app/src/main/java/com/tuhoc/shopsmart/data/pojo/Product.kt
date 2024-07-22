@@ -16,7 +16,7 @@ data class Product(
     @SerializedName("images")
     val images: List<String>?=null,
     @SerializedName("price")
-    val price: Int?=null,
+    val price: Double?=null,
     @SerializedName("rating")
     val rating: Double?=null,
     @SerializedName("stock")

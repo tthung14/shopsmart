@@ -48,13 +48,11 @@ class ProductDetailActivity : AppCompatActivity() {
                     binding.imgWishList.setBackgroundResource(R.drawable.ic_favorites)
                 }
             }
-
         }
 
         binding.apply {
             var quantity = tvQuantity.text.toString().toInt()
-            Log.d("TAG", "onClick: $quantity")
-            val price = tvPrice.text.toString().split("$ ")[1].toInt()
+            val price = tvPrice.text.toString().split("$ ")[1].toDouble()
             tvTotal.text = "$ ${quantity * price}"
 
             btnDecrease.setOnClickListener {

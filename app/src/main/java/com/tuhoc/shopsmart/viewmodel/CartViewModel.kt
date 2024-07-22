@@ -138,10 +138,10 @@ class CartViewModel : ViewModel() {
         return current.format(formatter)
     }
 
-    fun totalCost(itemsToOrder: MutableList<Cart>): Int {
-        var total = 0
+    fun totalCost(itemsToOrder: MutableList<Cart>): Double {
+        var total = 0.0
         for (i in itemsToOrder) {
-            val productPrice = i.product?.price ?: 0
+            val productPrice = i.product?.price ?: 0.0
             val quantity = i.quantity ?: 0
             total += quantity * productPrice
         }

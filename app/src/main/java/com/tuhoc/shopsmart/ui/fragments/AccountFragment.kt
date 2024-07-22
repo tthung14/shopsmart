@@ -49,19 +49,6 @@ class AccountFragment : Fragment() {
                 .into(binding.imgImage)
         }
 
-//        if (accountViewModel.getUser()!!.photoUrl != null) {
-//            // Chuyển đổi Base64 thành byte array
-//            val base64String = accountViewModel.getUser()?.photoUrl.toString()
-//
-//            val imageByteArray = Base64.decode(base64String, Base64.DEFAULT)
-//
-//            // Chuyển đổi byte array thành Bitmap
-//            val bitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
-//            Glide.with(requireContext())
-//                .load(bitmap)
-//                .into(binding.imgImage)
-//        }
-
         if (accountViewModel.getUser()!!.displayName != null) {
             binding.tvName.text = accountViewModel.getUser()?.displayName
         } else {

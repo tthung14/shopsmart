@@ -29,7 +29,7 @@ class OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.OrdersViewHolder>() {
             tvTitle.text = currentItem.product?.title
             tvQuantity.text = currentItem.quantity.toString()
 
-            val price = currentItem.product?.price ?: 0
+            val price = currentItem.product?.price ?: 0.0
             val quantity = currentItem.quantity ?: 0
             val totalPrice = price * quantity
             tvPrice.text = "$ $totalPrice"

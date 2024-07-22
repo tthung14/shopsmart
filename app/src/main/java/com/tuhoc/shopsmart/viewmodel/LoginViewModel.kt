@@ -17,4 +17,15 @@ class LoginViewModel : ViewModel() {
                 }
             }
     }
+
+    fun forgetPassword(email: String, onResult: (Boolean, String) -> Unit) {
+        firebaseAuth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    onResult(true, "Please check your email")
+                } else {
+                    onResult(false, "Error")
+                }
+            }
+    }
 }
