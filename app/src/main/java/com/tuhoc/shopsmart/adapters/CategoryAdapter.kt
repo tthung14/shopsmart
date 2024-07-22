@@ -30,7 +30,7 @@ class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>(
         val currentItem = categoryList[position]
         holder.binding.apply {
             Glide.with(holder.itemView)
-                .load(currentItem.imageUrl)
+                .load(currentItem.url)
                 .into(imgCategory)
 
             tvCategoryName.text = currentItem.name

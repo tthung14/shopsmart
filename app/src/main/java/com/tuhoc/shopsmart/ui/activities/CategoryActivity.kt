@@ -50,7 +50,7 @@ class CategoryActivity : AppCompatActivity() {
             val category: Category? = intent.getParcelableExtra(Constants.CATEGORY)
 
             binding.tvCategoryName.text = category?.name.toString()
-            categoryViewModel.getProductsByCategory(category?.name?: "")
+            categoryViewModel.getProductsByCategory(category?.slug?: "")
             categoryViewModel.productList.observe(this) { productList ->
                 productAdapter.setProductList(productList.toMutableList())
             }
